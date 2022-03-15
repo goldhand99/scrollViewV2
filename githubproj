@@ -1,0 +1,82 @@
+
+
+
+
+//here the scrollView will be added
+class MainViewController : UIViewController{ 
+
+ var feedPage : FirstViewController!
+ var instructionPage : SecondViewController! 
+ var scrollView : CustomUIScrollView! 
+
+ viewdidLoad(){ 
+scrollView = CustomUIScrollView.init(frame: self.view.frame)
+self.scrollView.contentSize = CGSize(width: self.view.frame.width * 2 , height: self.view.frame.height)
+self.view.addChild(self.scrollView)
+self.view.addsubView(self.scrollView)
+
+//the scrollview is added to the the mainviewController
+
+//the scrollview contains two UIViewController 
+//in the FirstViewController there will be another UIViewController
+feedPage = FirstViewController.init(frame: self.view.frame)
+instructionPage = SecondViewController.init(frame : self.view.frame)
+self.scrollView.delegate = self
+self.scrollView.addsubView(feedPage.view)
+self.scrollView.addsubView(instructionPage.view)
+
+ }
+
+ extension  MainViewController : UIScrollViewDelegate { 
+
+func viewDidScroll(){ 
+if self.feedPage.settings_menu_open{ 
+self.feedPage.settings_menu_open = false
+self.settingsMenu.removeFromSuperview()
+
+
+}else{ return}
+
+}
+
+
+
+
+
+ }
+
+
+
+
+
+
+ class FirstViewController : UIViewController { 
+
+var settingsMenu : AccountViewController = AccountViewController.init(frame: CGRect: CGRect.init(x: 30, y: 190, width: 375 , height: 420)
+    )
+    var settings_menu_open : UIViewController!
+    var button : UIButton = UIButton
+
+
+    func viewDidLoad(){ 
+self.view.addsubView(button) 
+
+    }
+
+    //shortly the button target is this 
+    //i ommited the button creation cause i have written this on notepad
+    //the settingsMenu is a UIViewController which contains multiple
+    // views which are presented in a uiscrollview where scrollview is disabled 
+    //when a button is pressed on the settings_menu_open there is another UIViewController added
+
+@objc button_target(){ 
+if self.settings_menu_open { 
+    self.settingsMenu.removeFromSuperview()
+    self.settings_menu_open = false 
+}else{ 
+self.view.addsubView(self.settings_menu_open)
+self.settings_menu_open = true 
+}
+}
+ }
+}
