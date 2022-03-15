@@ -1,5 +1,20 @@
 
 
+Practically I have a MainViewController which has a ScrollView(CustomUIScrollView). In the scrollView there are added two ViewControllers
+In the first ViewController(FeedPage) I add by the press of a button another UIViewController(settingsMenu) which is an user interface settings and information stuff about the profile.
+On the delegate of the MainViewController CustomScrollView, view didscroll closes the settingsMenu. 
+I cant change the UIViewController and will make no sense because anyway, there are added different views on to it. 
+
+
+
+
+
+
+
+
+
+
+
 
 
 //here the scrollView will be added
